@@ -1,0 +1,23 @@
+#include<stdio.h>
+#define INF 9999
+int main(){
+int n,at[10],bt[10],rem[10],wt[10],tat[10],i,t,done=0,min,idx;
+printf("Processes: ");scanf("%d",&n);
+for(i=0;i<n;i++){
+printf("AT BT P%d: ",i+1);scanf("%d%d",&at[i],&bt[i]);
+rem[i]=bt[i];wt[i]=0;
+}
+for(t=0;done<n;t++){
+min=INF;idx=-1;
+for(i=0;i<n;i++)
+if(at[i]<=t && rem[i]>0 && rem[i]<min){min=rem[i];idx=i;}
+if(idx==-1)continue;
+rem[idx]--;
+if(rem[idx]==0){done++;tat[idx]=t+1-at[idx];wt[idx]=tat[idx]-bt[idx];}
+}
+float sw=0,st=0;
+printf("\nP\tAT\tBT\tWT\tTAT\n");
+for(i=0;i<n;i++){sw+=wt[i];st+=tat[i];
+printf("P%d\t%d\t%d\t%d\t%d\n",i+1,at[i],bt[i],wt[i],tat[i]);}
+printf("Avg WT=%.2f Avg TAT=%.2f\n",sw/n,st/n);
+}
