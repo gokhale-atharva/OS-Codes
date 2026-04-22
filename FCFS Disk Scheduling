@@ -1,0 +1,15 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+int n,req[10],head,i,total=0,diff;
+printf("Initial head position: ");scanf("%d",&head);
+printf("Number of requests: ");scanf("%d",&n);
+for(i=0;i<n;i++){printf("Request %d: ",i+1);scanf("%d",&req[i]);}
+printf("\nOrder: %d",head);
+for(i=0;i<n;i++){
+diff=abs(req[i]-head);
+total+=diff; head=req[i];
+printf(" -> %d",req[i]);
+}
+printf("\nTotal head movement: %d\n",total);
+}
