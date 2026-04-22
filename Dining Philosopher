@@ -1,0 +1,16 @@
+#include<stdio.h>
+#define N 5
+int fork[N]={1,1,1,1,1}; /* 1=available */
+void philosopher(int i){
+int left=i, right=(i+1)%N;
+if(fork[left] && fork[right]){
+fork[left]=fork[right]=0;
+printf("Philosopher %d is EATING\n",i);
+fork[left]=fork[right]=1;
+printf("Philosopher %d finished, forks released\n",i);
+} else printf("Philosopher %d is WAITING\n",i);
+}
+int main(){
+int i;
+for(i=0;i<N;i++) philosopher(i);
+}
